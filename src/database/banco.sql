@@ -17,8 +17,8 @@ CREATE TABLE `categoria` (
   `descricao` varchar(50) NOT NULL,
   `sub_descricao` varchar(50) NOT NULL,
   `tipo` varchar(10) NOT NULL,
-  `createAt` datetime DEFAULT NULL,
-  `updateAt` datetime DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -44,7 +44,7 @@ CREATE TABLE `receita` (
   `valor` double NOT NULL,
   `idcategoria` int NOT NULL,
   `createdAt` datetime DEFAULT NULL,
-  `updateAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_receita_categoria1` (`idcategoria`),
   CONSTRAINT `fk_receita_categoria1` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`id`)
@@ -63,3 +63,14 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id`),
   KEY `fk_usuario_carteira_idx` (`carteira_idcarteira`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+
+CREATE TABLE dbbootcampgama01.compartilhamento_conta (
+	id INT auto_increment NOT NULL,
+	idusario INT NOT NULL,
+	createdAt DATETIME NULL,
+	updatedAt DATETIME NULL,
+	CONSTRAINT compartilhamento_conta_pk PRIMARY KEY (id)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb3
+COLLATE=utf8_general_ci;
