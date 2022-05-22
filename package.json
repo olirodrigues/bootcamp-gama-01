@@ -1,0 +1,28 @@
+{
+  "name": "bootcamp-gama-01",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Aplicação de controle de controle de gastos em casal.js</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olirodrigues/bootcamp-gama-01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olirodrigues/bootcamp-gama-01/issues"
+  },
+  "homepage": "https://github.com/olirodrigues/bootcamp-gama-01#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16",
+    "sequelize": "^6.19.2"
+  }
+}
