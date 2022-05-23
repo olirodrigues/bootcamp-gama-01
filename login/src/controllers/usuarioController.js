@@ -1,5 +1,5 @@
 const { Usuarios } = require('../models');
-const { CarteiraUsuario } = require('../models');
+const { use } = require('../routes');
 
 const usuarioController = {
     listarUsuarios: async (req, res) => {
@@ -11,7 +11,7 @@ const usuarioController = {
     async cadastrarUsuario (req, res) {
         try {
             const { nome, email, senha } = req.body;
-            const novoUsuario = await Usuarios.create({
+            const novoUsuario = await Usuarios.create({ 
                 nome,
                 email,
                 senha
@@ -65,13 +65,7 @@ const usuarioController = {
             }}); 
 
             if (user) {
-                // const listaDeUsuarios = await CarteiraUsuario.findAll();
-                // const carteira = await CarteiraUsuario.findOne({
-                //     where: {usuario_idusuario: user.idusuario}
-                
-                // })
                 req.session.login = email;
-                // return res.status(200).json('Logado com sucesso' + listaDeUsuarios);
                 return res.status(200).json('Logado com sucesso');
             }
             res.status(404).json("Usuário ou senha incorretos");
