@@ -1,34 +1,19 @@
-const Sequelize = require ("sequelize");
-
-
-const DB_NAME = 'dbbootcampgama01';
-const DB_USER = 'root';
-const DB_PASS = '30X@n19de73';
-const DB_CONFIG = {
-    dialect: 'mysql',
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize("mydb", "root", "123456", {
     host: 'localhost',
-    port: 3306,
-};
-
-let db = {};
-
-try {
-    db = new Sequelize(DB_NAME, DB_USER, DB_PASS, DB_CONFIG);
-} catch (error) {
-    console.error("Erro ao tentar uma conexão com o banco de dados");
-}
-
-async function hasConection() {
-    try {
-        await db.authenticate();
-        console.log("Banco de dados conectado");
-    } catch (error) {
-        console.error("Erro ao tentar conectar ao banco de dados" + error);
-    }
-}
-
-Object.assign(db, {
-    hasConection,
+    dialect: 'mysql',
+    define: {
+      timestamps: false,
+      createdAt: false,
+      updatedAt: false,
+  }
 });
 
-module.exports = db;
+try {
+    sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+
+  module.exports = sequelize;

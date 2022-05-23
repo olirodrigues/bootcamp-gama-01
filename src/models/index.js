@@ -1,11 +1,11 @@
 const Usuarios = require('./Usuarios');
+const Categoria = require('./Categoria');
 const Carteira = require('./Carteira');
-const Receitas = require('./Receitas');
-const Despesas = require('./Despesas');
+
 
 module.exports = {
     Usuarios,
+    Categoria,
     Carteira,
-    Receitas,
-    Despesas,
+
 }

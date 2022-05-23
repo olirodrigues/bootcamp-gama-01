@@ -4,7 +4,7 @@ const db = require('./database');
 
 const app = express();
 
-db.hasConection();
+//db.hasConection();
 
 app.use(express.json());
 app.use(routes);

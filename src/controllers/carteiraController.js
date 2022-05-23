@@ -1,3 +1,4 @@
+const { response } = require('express');
 const { Carteira } = require('../models');
 
 const carteiraController = {
@@ -5,22 +6,25 @@ const carteiraController = {
         const listaDeCarteira = await Carteira.findall();
         
         res.json(listaDeCarteira);
+       //res.send("OK");
     },
 
     async cadastrarCarteira (req, res) {
         try {
-            const { saldo, total_receita, total_despesa } = req.body;
+        const { descricao, valor, data, tipo, categoria_idcategoria } = req.body;
             const novoCarteira = await Carteira.create({
-                saldo,
-                total_receita,
-                total_despesa
+                descricao,
+                valor,
+                data,
+                tipo,
+                categoria_idcategoria
             });
-
             res.status(201).json(novoCarteira);
-        } catch (error) {
+        }            
+         catch (error) {
             return res.status(500).json('Ocorreu algum problema' + error);
         }
-    },
-};
+    }
+}
 
 module.exports = carteiraController

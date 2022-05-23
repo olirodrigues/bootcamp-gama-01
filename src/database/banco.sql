@@ -1,76 +1,84 @@
--- dbbootcampgama01.carteira definition
+-- MySQL Workbench Forward Engineering
 
-CREATE TABLE `carteira` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `saldo` double DEFAULT NULL,
-  `total_receita` double DEFAULT NULL,
-  `total_despesa` double DEFAULT NULL,
-  `createdAt` datetime DEFAULT NULL,
-  `updatedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- dbbootcampgama01.categoria definition
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
 
-CREATE TABLE `categoria` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(50) NOT NULL,
-  `sub_descricao` varchar(50) NOT NULL,
-  `tipo` varchar(10) NOT NULL,
-  `createdAt` datetime DEFAULT NULL,
-  `updatedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
 
--- dbbootcampgama01.despesa definition
+-- -----------------------------------------------------
+-- Table `mydb`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
+  `idusuario` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idusuario`))
+ENGINE = InnoDB;
 
-CREATE TABLE `despesa` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(50) NOT NULL,
-  `data` date NOT NULL,
-  `valor` double NOT NULL,
-  `idcategoria` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_despesa_categoria1` (`idcategoria`),
-  CONSTRAINT `fk_despesa_categoria1` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- dbbootcampgama01.receita definition
+-- -----------------------------------------------------
+-- Table `mydb`.`categoria`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`categoria` (
+  `idcategoria` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(45) NULL,
+  PRIMARY KEY (`idcategoria`))
+ENGINE = InnoDB;
 
-CREATE TABLE `receita` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(50) NOT NULL,
-  `data` date NOT NULL,
-  `valor` double NOT NULL,
-  `idcategoria` int NOT NULL,
-  `createdAt` datetime DEFAULT NULL,
-  `updatedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_receita_categoria1` (`idcategoria`),
-  CONSTRAINT `fk_receita_categoria1` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- dbbootcampgama01.usuario definition
+-- -----------------------------------------------------
+-- Table `mydb`.`carteira`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`carteira` (
+  `idcarteira` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(45) NOT NULL,
+  `valor` DOUBLE NOT NULL,
+  `data` DATE NOT NULL,
+  `categoria` VARCHAR(45) NOT NULL,
+  `tipo` INT NOT NULL,
+  `categoria_idcategoria` INT NOT NULL,
+  PRIMARY KEY (`idcarteira`),
+  INDEX `fk_carteira_categoria_idx` (`categoria_idcategoria` ASC) VISIBLE,
+  CONSTRAINT `fk_carteira_categoria`
+    FOREIGN KEY (`categoria_idcategoria`)
+    REFERENCES `mydb`.`categoria` (`idcategoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE `usuario` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `senha` varchar(50) NOT NULL,
-  `carteira_idcarteira` int DEFAULT NULL,
-  `createdAt` datetime DEFAULT NULL,
-  `updatedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_usuario_carteira_idx` (`carteira_idcarteira`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
-CREATE TABLE dbbootcampgama01.compartilhamento_conta (
-	id INT auto_increment NOT NULL,
-	idusario INT NOT NULL,
-	createdAt DATETIME NULL,
-	updatedAt DATETIME NULL,
-	CONSTRAINT compartilhamento_conta_pk PRIMARY KEY (id)
-)
-ENGINE=InnoDB
-DEFAULT CHARSET=utf8mb3
-COLLATE=utf8_general_ci;
+-- -----------------------------------------------------
+-- Table `mydb`.`carteira_usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`carteira_usuario` (
+  `carteira_idcarteira` INT NOT NULL,
+  `usuario_idusuario` INT NOT NULL,
+  PRIMARY KEY (`carteira_idcarteira`, `usuario_idusuario`),
+  INDEX `fk_carteira_has_usuario_usuario1_idx` (`usuario_idusuario` ASC) VISIBLE,
+  INDEX `fk_carteira_has_usuario_carteira1_idx` (`carteira_idcarteira` ASC) VISIBLE,
+  CONSTRAINT `fk_carteira_has_usuario_carteira1`
+    FOREIGN KEY (`carteira_idcarteira`)
+    REFERENCES `mydb`.`carteira` (`idcarteira`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_carteira_has_usuario_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `mydb`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -2,19 +2,28 @@ const db = require("../database");
 const { DataTypes } = require("sequelize");
 
 const Carteira = db.define("Carteira", {
-    id: {
+    idcarteira: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    saldo: {
+    descricao: {
+        type: DataTypes.STRING
+    },
+    valor: {
         type: DataTypes.DOUBLE,
     },
-    total_receita: {
-        type: DataTypes.DOUBLE,
+    data: {
+        type: DataTypes.DATE,
     },
-    total_despesa: {
-        type: DataTypes.DOUBLE,
+    categoria: {
+        type: DataTypes.STRING,
+    },
+    tipo: {
+        type: DataTypes.INTEGER,
+    },
+    categoria_idcategoria: {
+        type: DataTypes.INTEGER,
     },
 },
 {

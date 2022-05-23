@@ -1,24 +1,18 @@
 const db = require("../database");
 const { DataTypes } = require("sequelize");
 
-const Receitas = db.define("Receitas", {
-    id: {
+const Categoria = db.define("Categoria", {
+    idcategoria: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
     descricao: {
         type: DataTypes.STRING,
-    },
-    valor: {
-        type: DataTypes.DOUBLE,
-    },
-    database: {
-        type: DataTypes.DATE,
-    },
+    }
 },
 {
-    tableName: "receita"
+    tableName: "categoria"
 });
 
-module.exports = Receitas;
+module.exports = Categoria;
