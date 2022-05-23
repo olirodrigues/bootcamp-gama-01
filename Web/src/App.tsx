@@ -6,6 +6,7 @@ import { Global } from "@emotion/react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { ThemeProvider } from "@mui/material";
+import { Cadastro } from "./pages/Cadastro";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/cadastro' element={<Cadastro />} />
         </Routes>
       </ThemeProvider>
     </>
