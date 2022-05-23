@@ -14,5 +14,4 @@ export const ContainerHeader = styled.div`
 
 export const Button = styled(ButtonMUI)`
   border-radius: 24px;
-  text-transform: capitalize;
 `;
