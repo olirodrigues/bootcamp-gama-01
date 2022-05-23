@@ -1,7 +1,6 @@
-import React from "react";
-
 import { css } from "@emotion/react";
 import { createTheme } from "@mui/material";
+import type {} from "@mui/lab/themeAugmentation";
 
 export const GlobalStyles = css`
   * {
@@ -20,7 +19,35 @@ export const GlobalStyles = css`
   }
 `;
 
-export const Theme = createTheme({
+declare module "@mui/material/styles" {
+  interface TypographyVariants {
+    bold: React.CSSProperties;
+  }
+  interface TypographyVariantsOptions {
+    bold?: React.CSSProperties;
+  }
+}
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    bold: true;
+  }
+}
+declare module "@mui/material/Button" {
+  interface ButtonPropsVariantOverrides {
+    border: true;
+  }
+
+  interface ButtonPropsColorOverrides {
+    a: true;
+  }
+}
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#F27D28",
+    },
+  },
   typography: {
     fontFamily: ["Inter"].join(","),
     h1: {
@@ -41,7 +68,32 @@ export const Theme = createTheme({
       fontWeight: 400,
     },
     body1: {
-      fontSize: 12,
+      fontSize: 14,
+    },
+    bold: {
+      fontWeight: 600,
+    },
+  },
+});
+
+export const Theme = createTheme(theme, {
+  components: {
+    MuiButton: {
+      defaultProps: {
+        style: {
+          textTransform: "none",
+        },
+      },
+      variants: [
+        {
+          props: { variant: "border", color: "a" },
+          style: {
+            borderRadius: 50,
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.getContrastText(theme.palette.primary.main),
+          },
+        },
+      ],
     },
   },
 });
