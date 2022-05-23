@@ -10,7 +10,9 @@ interface HeaderProps {
 export const Header = ({ HiddenBotao = false }: HeaderProps) => {
   return (
     <ContainerHeader>
-      <img className='logo' src={Logo} alt='' />
+      <Link to='/'>
+        <img className='logo' src={Logo} alt='' />
+      </Link>
       {!HiddenBotao && (
         <Link to='/login'>
           <Button variant='contained'>Acessar conta</Button>
