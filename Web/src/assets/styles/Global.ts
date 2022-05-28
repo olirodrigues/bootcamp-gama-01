@@ -178,7 +178,7 @@ export const Theme = createTheme(theme, {
       },
       variants: [
         {
-          props: { variant: "border", color: "a" },
+          props: { variant: "border" },
           style: {
             borderRadius: 50,
             backgroundColor: theme.palette.primary.main,
