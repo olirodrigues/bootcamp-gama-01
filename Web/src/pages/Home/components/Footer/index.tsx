@@ -4,7 +4,7 @@ import { ContainerFooter, ContainerIconeSocial, ItemListaSocial } from "./Footer
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { Typography } from "@mui/material";
 
-export default function Footer() {
+export function Footer() {
   return (
     <ContainerFooter>
       <img className='logo' src={Logo} alt='' />

@@ -10,7 +10,7 @@ export const Cadastro = () => {
       <Header HiddenBotao={true} />
       <Typography variant='h3'>Criar conta</Typography>
       <LoginGoogle>
-        <Button variant='border' color='a' fullWidth startIcon={<FaGoogle />}>
+        <Button variant='border' fullWidth startIcon={<FaGoogle />}>
           Entrar com o Google
         </Button>
       </LoginGoogle>
@@ -21,7 +21,7 @@ export const Cadastro = () => {
         <TextField variant='outlined' label='Digite sua senha' type='password'></TextField>
         <TextField variant='outlined' label='Repita sua senha' type='password'></TextField>
         <Link to='/login'>
-          <Button variant='border' color='a' fullWidth>
+          <Button variant='border' fullWidth>
             Cadastrar
           </Button>
         </Link>
