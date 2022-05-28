@@ -18,9 +18,11 @@ export default function Login() {
       <FormContainer>
         <TextField variant='outlined'></TextField>
         <TextField variant='outlined'></TextField>
-        <Button variant='border' color='a'>
-          Entrar
-        </Button>
+        <Link to='/dashboard'>
+          <Button variant='border' fullWidth color='a'>
+            Entrar
+          </Button>
+        </Link>
       </FormContainer>
       <Link to='/cadastro'>
         <Typography variant='body1' align='center'>
