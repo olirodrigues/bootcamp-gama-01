@@ -15,13 +15,17 @@ interface TransactionsTableProps {
 
 export function TransactionsTable({ tableColumns, tableRows }: TransactionsTableProps) {
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div>
       <StyledDataGrid
+        autoHeight
+        autoPageSize
         rows={tableRows}
         columns={tableColumns}
+        editMode='row'
         pageSize={5}
         rowsPerPageOptions={[5]}
-        editMode='row'
+        disableColumnMenu
+        disableSelectionOnClick
       />
     </div>
   );

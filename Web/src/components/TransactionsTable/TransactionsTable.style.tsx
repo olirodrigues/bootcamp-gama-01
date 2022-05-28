@@ -6,4 +6,7 @@ export const StyledDataGrid = styled(DataGrid)(() => ({
   "& .MuiDataGrid-iconSeparator": {
     display: "none",
   },
+  "& .MuiDataGrid-columnHeader--moving": {
+    backgroundColor: "transparent",
+  },
 }));
