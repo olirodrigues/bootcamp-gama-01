@@ -22,23 +22,22 @@ export const GlobalStyles = css`
 declare module "@mui/material/styles" {
   interface TypographyVariants {
     bold: React.CSSProperties;
+    subtitle3: React.CSSProperties;
   }
   interface TypographyVariantsOptions {
     bold?: React.CSSProperties;
+    subtitle3?: React.CSSProperties;
   }
 }
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     bold: true;
+    subtitle3: true;
   }
 }
 declare module "@mui/material/Button" {
   interface ButtonPropsVariantOverrides {
     border: true;
-  }
-
-  interface ButtonPropsColorOverrides {
-    a: true;
   }
 }
 
@@ -46,6 +45,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#F27D28",
+    },
+    text: {
+      secondary: "#868080",
     },
   },
   typography: {
@@ -70,6 +72,11 @@ const theme = createTheme({
     subtitle2: {
       fontSize: 19,
       fontWeight: 400,
+    },
+    // TODO: define a better name for this
+    subtitle3: {
+      fontSize: 18,
+      fontWeight: 700,
     },
     body1: {
       fontSize: 14,
