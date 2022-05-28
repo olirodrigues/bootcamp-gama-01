@@ -1,4 +1,3 @@
-import Card from "../Card";
 import Image1 from "../../../../assets/images/Image1.svg";
 import Image2 from "../../../../assets/images/Image2.svg";
 import {
@@ -8,8 +7,9 @@ import {
   ContainerText,
 } from "./MainContent.style";
 import { Button, Typography } from "@mui/material";
+import { Card } from "../Card";
 
-export default function MainContent() {
+export function MainContent() {
   const CardInfo = [
     {
       img: Image2,

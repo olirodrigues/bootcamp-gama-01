@@ -7,7 +7,7 @@ interface CardProps {
   text: string;
 }
 
-export default function Card(props: CardProps) {
+export function Card(props: CardProps) {
   return (
     <ContainerCard>
       <img src={props.img}></img>
