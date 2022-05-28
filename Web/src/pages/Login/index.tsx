@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { Container, FormContainer, LoginGoogle } from "./Login.style";
 
-export default function Login() {
+export function Login() {
   return (
     <Container>
       <Header HiddenBotao={true} />
       <Typography variant='h3'>Acessar conta</Typography>
       <LoginGoogle>
-        <Button variant='border' color='a' fullWidth startIcon={<FaGoogle />}>
+        <Button variant='border' fullWidth startIcon={<FaGoogle />}>
           Entrar com o Google
         </Button>
       </LoginGoogle>
@@ -19,7 +19,7 @@ export default function Login() {
         <TextField variant='outlined'></TextField>
         <TextField variant='outlined'></TextField>
         <Link to='/dashboard'>
-          <Button variant='border' fullWidth color='a'>
+          <Button variant='border' fullWidth>
             Entrar
           </Button>
         </Link>

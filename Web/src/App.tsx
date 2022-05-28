@@ -3,13 +3,13 @@ import { GlobalStyles, Theme } from "./assets/styles/Global";
 import { Routes, Route } from "react-router-dom";
 
 import { Global } from "@emotion/react";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
 import { ThemeProvider } from "@mui/material";
 import { Cadastro } from "./pages/Cadastro";
 import { Dashboard } from "./pages/Dashboard";
 
-function App() {
+export function App() {
   return (
     <>
       <Global styles={GlobalStyles} />
@@ -24,5 +24,3 @@ function App() {
     </>
   );
 }
-
-export default App;

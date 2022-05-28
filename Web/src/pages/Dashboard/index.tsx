@@ -6,7 +6,7 @@ import {
 } from "react-icons/md";
 import { Cabecalho } from "../../components/Cabecalho";
 import { CardSaldo } from "../../components/CardSaldo";
-import FilterMes from "../../components/FilterMes";
+import { FilterMes } from "../../components/FilterMes";
 import { Menu } from "../../components/Menu";
 import { Container, ContainerConteudo } from "./Dashboard.style";
 

@@ -5,7 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import ptBrLocale from "date-fns/locale/pt-BR";
 import { Container } from "./Filter.style";
 
-export default function FilterMes() {
+export function FilterMes() {
   const [month, setMonth] = useState<Date | null>(new Date());
 
   return (
