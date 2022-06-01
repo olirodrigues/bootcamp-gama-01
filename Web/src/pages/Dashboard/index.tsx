@@ -7,8 +7,7 @@ import {
 import { Cabecalho } from "../../components/Cabecalho";
 import { CardSaldo } from "../../components/CardSaldo";
 import { FilterMes } from "../../components/FilterMes";
-import { Menu } from "../../components/Menu";
-import { Container, ContainerConteudo } from "./Dashboard.style";
+import { Layout } from "../../components/Layout";
 
 export const Dashboard = () => {
   const dadosCard = [
@@ -35,13 +34,10 @@ export const Dashboard = () => {
   ];
 
   return (
-    <Container>
-      <Menu />
-      <ContainerConteudo>
-        <Cabecalho title='Dashboard' name='OR' />
-        <FilterMes />
-        <CardSaldo dados={dadosCard} />
-      </ContainerConteudo>
-    </Container>
+    <Layout>
+      <Cabecalho title='Dashboard' name='OR' />
+      <FilterMes />
+      <CardSaldo dados={dadosCard} />
+    </Layout>
   );
 };

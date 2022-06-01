@@ -4,7 +4,8 @@ export const ContainerMenu = styled.div`
   background-color: #eeeeee;
   height: 100vh;
   width: 268px;
-  padding-inline: 15px;
+  min-width: 268px;
+  padding-inline: 16px;
 
   img {
     margin-block: 36px 68px;
