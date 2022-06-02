@@ -1,5 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid";
-import { StyledDataGrid } from "./TransactionsTable.style";
+import * as Styled from "./TransactionsTable.style";
 
 interface TransactionsTableProps {
   tableColumns: GridColDef[];
@@ -15,10 +15,9 @@ interface TransactionsTableProps {
 
 export function TransactionsTable({ tableColumns, tableRows }: TransactionsTableProps) {
   return (
-    <div>
-      <StyledDataGrid
+    <Styled.ContainerTable>
+      <Styled.StyledDataGrid
         autoHeight
-        autoPageSize
         rows={tableRows}
         columns={tableColumns}
         editMode='row'
@@ -27,6 +26,6 @@ export function TransactionsTable({ tableColumns, tableRows }: TransactionsTable
         disableColumnMenu
         disableSelectionOnClick
       />
-    </div>
+    </Styled.ContainerTable>
   );
 }
