@@ -2,6 +2,7 @@ import {
   Autocomplete,
   Button,
   Dialog,
+  DialogActions,
   DialogContentText,
   DialogTitle,
   FormControl,
@@ -17,8 +18,10 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import ptBrLocale from "date-fns/locale/pt-BR";
 import { useState } from "react";
-import { MdHomeWork, MdOutlineSearch } from "react-icons/md";
+import { MdAdd, MdClose, MdHomeWork, MdOutlineNote, MdOutlineSearch } from "react-icons/md";
 import { RiPercentLine } from "react-icons/ri";
+
+import * as Styled from "./NovaDespesa.style";
 
 export function NovaDespesa() {
   const [open, setOpen] = useState(false);
@@ -43,25 +46,41 @@ export function NovaDespesa() {
 
   return (
     <>
-      <Button variant='outlined' onClick={handleClickOpen}>
-        Open form dialog
+      <Button
+        variant='borderSecondary'
+        startIcon={<MdAdd />}
+        color='secondary'
+        onClick={handleClickOpen}
+      >
+        Nova despesa
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Nova despesa</DialogTitle>
-        <DialogContentText>
+        <Styled.Titulo variant='h4' sx={{ fontWeight: 700 }}>
+          Nova despesa
+          <Styled.CloseButton onClick={handleClose}>
+            <MdClose />
+          </Styled.CloseButton>
+        </Styled.Titulo>
+        <DialogContentText
+          sx={{ m: 0, p: 2, display: "flex", flexDirection: "column", gap: 3, color: "secondary" }}
+        >
+          {/* valor */}
           <TextField
+            color='secondary'
             label='Valor'
             InputProps={{
-              startAdornment: <InputAdornment position='end'>R$</InputAdornment>,
+              startAdornment: <InputAdornment position='start'>R$</InputAdornment>,
             }}
           />
-          <div>
+          <Styled.TwoColumn>
+            {/* Switch Pago */}
             <FormControlLabel
               value='start'
-              control={<Switch color='primary' />}
+              control={<Switch color='secondary' />}
               label='Pago'
               labelPlacement='start'
             />
+            {/* date */}
             <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBrLocale}>
               <DatePicker
                 views={["day"]}
@@ -72,66 +91,72 @@ export function NovaDespesa() {
                 onChange={(newMonth) => {
                   setMonth(newMonth);
                 }}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params) => <TextField fullWidth color='secondary' {...params} />}
               />
             </LocalizationProvider>
-          </div>
+          </Styled.TwoColumn>
+          {/* descrição */}
           <TextField
             label='Descrição'
+            color='secondary'
             InputProps={{
-              startAdornment: <InputAdornment position='end'>R$</InputAdornment>,
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <MdOutlineNote size={24} />
+                </InputAdornment>
+              ),
             }}
           />
+          <FormControlLabel
+            value='end'
+            control={<Switch color='secondary' />}
+            label='Compartilhar conta'
+            labelPlacement='end'
+          />
+          <Styled.TwoColumn>
+            {/* email */}
+            <TextField
+              fullWidth
+              label='Email do usuário para compartilhar'
+              color='secondary'
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='start'>
+                    <MdOutlineSearch size={24} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* porcentagem */}
+            <TextField
+              sx={{ width: "15ch" }}
+              color='secondary'
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='start'>
+                    <RiPercentLine size={15} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Styled.TwoColumn>
+          {/* categorias */}
           <Autocomplete
             disablePortal
             id='combo-box-demo'
             sx={{ width: "100%" }}
             options={CategoriasDespesas}
-            renderInput={(params) => <TextField {...params} label='Categoria' />}
+            renderInput={(params) => <TextField color='secondary' {...params} label='Categoria' />}
           />
-          <FormControlLabel
-            value='end'
-            control={<Switch color='primary' />}
-            label='Compartilhar conta'
-            labelPlacement='end'
-          />
-          <div>
-            <FormControl sx={{ width: "35ch" }} variant='outlined'>
-              <InputLabel htmlFor='outlined-adornment-password'>
-                Email do usuário para compartilhar
-              </InputLabel>
-              <OutlinedInput
-                id='outlined-adornment-weight'
-                label=' Email do usuário para compartilhar'
-                endAdornment={
-                  <InputAdornment position='end'>
-                    <MdOutlineSearch />
-                  </InputAdornment>
-                }
-                aria-describedby='outlined-weight-helper-text'
-                inputProps={{
-                  "aria-label": "weight",
-                }}
-              />
-              <FormHelperText id='outlined-weight-helper-text'></FormHelperText>
-            </FormControl>
-
-            <FormControl sx={{ width: "15ch" }} variant='outlined'>
-              <OutlinedInput
-                id='outlined-adornment-weight'
-                endAdornment={
-                  <InputAdornment position='end'>
-                    <RiPercentLine />
-                  </InputAdornment>
-                }
-                inputProps={{
-                  "aria-label": "weight",
-                }}
-              />
-            </FormControl>
-          </div>
         </DialogContentText>
-        <Button variant='border'>Salvar</Button>
+        <DialogActions>
+          <Button
+            sx={{ w: "165px", margin: "auto", marginBottom: "30px" }}
+            variant='borderSecondary'
+          >
+            Salvar
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   );

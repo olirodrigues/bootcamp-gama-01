@@ -64,7 +64,8 @@ declare module "@mui/material/Typography" {
 }
 declare module "@mui/material/Button" {
   interface ButtonPropsVariantOverrides {
-    border: true;
+    borderPrimary: true;
+    borderSecondary: true;
   }
 }
 
@@ -76,9 +77,9 @@ const theme = createTheme({
       dark: "#1B314B",
     },
     secondary: {
-      light: "#577D9A",
-      main: "#253F58",
-      dark: "#1B314B",
+      light: "#E2A352",
+      main: "#D07A20",
+      dark: "#B25F17",
     },
     complementaryYellow: {
       light: "#577D9A",
@@ -178,11 +179,19 @@ export const Theme = createTheme(theme, {
       },
       variants: [
         {
-          props: { variant: "border" },
+          props: { variant: "borderPrimary" },
           style: {
             borderRadius: 50,
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.getContrastText(theme.palette.primary.main),
+          },
+        },
+        {
+          props: { variant: "borderSecondary" },
+          style: {
+            borderRadius: 50,
+            backgroundColor: theme.palette.secondary.main,
+            color: theme.palette.getContrastText(theme.palette.secondary.main),
           },
         },
       ],
