@@ -10,7 +10,7 @@ export function Login() {
       <Header HiddenBotao={true} />
       <Typography variant='h3'>Acessar conta</Typography>
       <LoginGoogle>
-        <Button variant='border' fullWidth startIcon={<FaGoogle />}>
+        <Button variant='borderPrimary' fullWidth startIcon={<FaGoogle />}>
           Entrar com o Google
         </Button>
       </LoginGoogle>
@@ -19,7 +19,7 @@ export function Login() {
         <TextField variant='outlined'></TextField>
         <TextField variant='outlined'></TextField>
         <Link to='/dashboard'>
-          <Button variant='border' fullWidth>
+          <Button variant='borderPrimary' fullWidth>
             Entrar
           </Button>
         </Link>

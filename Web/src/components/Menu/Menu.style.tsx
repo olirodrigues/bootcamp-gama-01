@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const ContainerMenu = styled.div`
+  position: fixed;
   background-color: #eeeeee;
   height: 100vh;
   width: 268px;
