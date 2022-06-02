@@ -25,26 +25,18 @@ declare module "@mui/material/styles" {
     complementaryBlue: Palette["primary"];
     complementaryWhite: Palette["primary"];
     complementaryBlack: Palette["primary"];
-    Complementar2: Palette["primary"];
-    Complementar3: Palette["primary"];
-    Complementar4: Palette["primary"];
-    Complementar5: Palette["primary"];
-    Complementar6: Palette["primary"];
-    Complementar7: Palette["primary"];
-    Complementar8: Palette["primary"];
   }
   interface PaletteOptions {
     complementaryYellow: PaletteOptions["primary"];
     complementaryBlue: PaletteOptions["primary"];
     complementaryWhite: PaletteOptions["primary"];
     complementaryBlack: PaletteOptions["primary"];
-    Complementar2: PaletteOptions["primary"];
-    Complementar3: PaletteOptions["primary"];
-    Complementar4: PaletteOptions["primary"];
-    Complementar5: PaletteOptions["primary"];
-    Complementar6: PaletteOptions["primary"];
-    Complementar7: PaletteOptions["primary"];
-    Complementar8: PaletteOptions["primary"];
+  }
+  interface PaletteColor {
+    lightExtra?: string;
+  }
+  interface SimplePaletteColorOptions {
+    lightExtra?: string;
   }
 
   interface TypographyVariants {
@@ -92,6 +84,7 @@ const theme = createTheme({
       dark: "#1B314B",
     },
     complementaryWhite: {
+      lightExtra: "#FBF9F3",
       light: "#577D9A",
       main: "#ffffff",
       dark: "#1B314B",
@@ -100,33 +93,6 @@ const theme = createTheme({
       light: "#577D9A",
       main: "#253F58",
       dark: "#1B314B",
-    },
-    Complementar2: {
-      main: "#6296b3",
-    },
-    Complementar3: {
-      main: "#ffffff",
-    },
-    Complementar4: {
-      main: "#575454",
-    },
-    Complementar5: {
-      main: "#868080",
-    },
-    Complementar6: {
-      main: "#e5e5e5",
-    },
-    Complementar7: {
-      main: "#dad4c8",
-    },
-    Complementar8: {
-      main: "#be1e1e",
-    },
-    warning: {
-      main: "#1B314B",
-    },
-    success: {
-      main: "#253F58",
     },
     text: {
       secondary: "#868080",

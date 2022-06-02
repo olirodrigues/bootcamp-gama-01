@@ -12,9 +12,11 @@ import {
 import { Cabecalho } from "../../components/Cabecalho";
 import { CardSaldo } from "../../components/CardSaldo";
 import { FilterMes } from "../../components/FilterMes";
+import { FilterTransacao } from "../../components/FilterTransacao";
 import { Layout } from "../../components/Layout";
 import { NovaDespesa } from "../../components/Modal/NovaDespesa";
 import { TransactionsTable } from "../../components/TransactionsTable";
+import * as Styled from "./Despesas.styles";
 
 export function Despesas() {
   const dadosCard = [
@@ -44,37 +46,37 @@ export function Despesas() {
     {
       field: "status",
       headerName: "Status",
-      width: 120,
+      width: 144,
     },
     {
       field: "data",
       headerName: "Data",
-      width: 100,
+      width: 151,
     },
     {
       field: "descricao",
       headerName: "Descrição",
-      width: 200,
+      width: 204,
     },
     {
       field: "categoria",
       headerName: "Categoria",
-      width: 120,
+      width: 157,
     },
     {
       field: "valor",
       headerName: "Valor",
-      width: 120,
+      width: 153,
     },
 
     {
       field: "",
       headerName: "",
-      width: 120,
+      width: 131,
       renderCell: (params: GridRenderCellParams) => (
         <>
-          <MdModeEdit size={13} />
-          <MdOutlineDeleteOutline />
+          <MdModeEdit size={18} />
+          <MdOutlineDeleteOutline size={18} />
         </>
       ),
     },
@@ -203,13 +205,13 @@ export function Despesas() {
   return (
     <Layout>
       <Cabecalho title='Despesas' name='OR' />
-      <div>
-        <NovaDespesa />
-        <Button variant='border' startIcon={<MdAdd />}>
-          Nova Despesa
-        </Button>
+      <Styled.Container>
+        <Styled.ContainerActions>
+          <NovaDespesa />
+          <FilterTransacao />
+        </Styled.ContainerActions>
         <FilterMes />
-      </div>
+      </Styled.Container>
       <CardSaldo dados={dadosCard} />
       <TransactionsTable tableColumns={tableColumns} tableRows={tableRows} />
     </Layout>
